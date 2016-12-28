@@ -5,11 +5,6 @@
 
 $gray-medium-light: #eaeaea;
 
-    @mixin box_sizing {
-      -moz-box-sizing:    border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing:         border-box;
-    }
 
 
 /* universal */
@@ -105,14 +100,17 @@ footer {
 }
 
     /* miscellaneous */
+/* miscellaneous */
 
-    .debug_dump {
-      clear: both;
-      float: left;
-      width: 100%;
-      margin-top: 45px;
-      @include box_sizing;
-    }
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
     
     
 /* sidebar */
@@ -159,7 +157,9 @@ footer {
       border: 1px solid #bbb;
       width: 100%;
       margin-bottom: 15px;
-      @include box_sizing;
+      -moz-box-sizing:    border-box;
+      -webkit-box-sizing: border-box;
+       box-sizing:         border-box;
     }
 
     input {
