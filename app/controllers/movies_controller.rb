@@ -4,19 +4,25 @@ class MoviesController < ApplicationController
     
     
     def index
-        @movies = Movie.all.order("created_at DESC")
-    end    
+        if params[:genre].blank?
+            @movies = Movie.all.order("created_at DESC")
+        else
+            @genre_id = Genre.find_by(name: params[:genre]).id
+            @movies = Movie.where(:genre_id => @genre_id).order("created_at DESC")
+        end    
+    end
     
     def show
     end
     
     def new
         @movie = current_user.movies.build
+        @genres = Genre.all.map{|g| [g.name, g.id]}
     end  
     
     def create
         @movie = current_user.movies.build(movie_params)
-        
+        @movie.genre_id = params[:genre_id]
         if @movie.save
             redirect_to movies_url
         else
@@ -25,9 +31,11 @@ class MoviesController < ApplicationController
     end  
     
     def edit
+         @genres = Genre.all.map{|g| [g.name, g.id]}
     end
     
     def update
+        @movie.genre_id = params[:genre_id]
         if  @movie.update(movie_params)
             redirect_to movie_path(@movie)
         else
@@ -44,7 +52,7 @@ class MoviesController < ApplicationController
     private
     
         def movie_params
-            params.require(:movie).permit(:title, :description, :director)
+            params.require(:movie).permit(:title, :description, :director, :genre_id)
         end
         
         def find_movie
