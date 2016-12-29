@@ -5,8 +5,17 @@
     <h3>There are no Movies currently in this category</h3>
     
 <%else %>
+
+    <div class ="row"></div>
     
-    <% @movies.each do |movie| %>
-        <h2><%= link_to movie.title, movie_path(movie) %></h2>
-    <% end %>
+        <% @movies.each do |movie| %>
+            <div class="col-md-3">
+                <a href = "/movies/<%= movie.id %>">
+                    <%= image_tag movie.movie_img.url(:movie_index), class: "movie" %>
+                </a>
+            </div>
+        <% end %>
+        
+    </div>
+    
 <%end%>
