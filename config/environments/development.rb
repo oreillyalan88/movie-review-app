@@ -46,5 +46,6 @@ Rails.application.configure do
   host = 'movie-review-app-oreillyalan88.c9users.io' # Don't use this literally; use your local dev host instead
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   
+  Paperclip.options[:command_path] = "/usr/bin/convert"
   
 end
