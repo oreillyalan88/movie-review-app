@@ -3,6 +3,14 @@ class MoviesController < ApplicationController
     before_action :redirect_user, only: [:new, :edit, :update, :destroy]
     
     
+    def search
+        if params[:search].present?
+            @movies = Movie.search(params[:search])
+        else
+            @movies = Movie.all
+        end
+    end
+        
     def index
         if params[:genre].blank?
             @movies = Movie.all.order("created_at DESC").paginate(page: params[:page], :per_page=> 4)

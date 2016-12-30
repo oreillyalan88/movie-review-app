@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+    searchkick
     belongs_to :user
     belongs_to :genre
     has_many :reviews

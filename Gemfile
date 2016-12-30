@@ -19,6 +19,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'simple_form'
 gem "awesome_print", require:"ap"
 gem 'paperclip', '~> 5.1'
+gem 'searchkick', '~> 2.0'
 
 
 group :development, :test do
