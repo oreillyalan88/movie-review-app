@@ -14,7 +14,16 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :reviews
+    resources :reviews do
+      member do
+        put "like", to: "reviews#upvote"
+        put "dislike", to: "reviews#downvote"
+      end
+    end
+    
+    
+    
+    
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
