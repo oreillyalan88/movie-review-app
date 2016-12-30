@@ -1,0 +1,47 @@
+<div class="review">
+
+	<div id="div_top_hypers">
+	<ul id="ul_top_hypers">
+	    <li><%= link_to gravatar_for(review.user, size: 50), review.user %></li>
+	    <li><div class ="review-name"><%= link_to review.movie.title, review.movie %> </div></li>
+		<li><div class ="review-name">Reviewed by <%= link_to review.user.name, review.user %></div></li>
+		<li><div class="review-rating" data-score="<%= review.rating %>"></div></li>
+		<li><p class="timestamp"><%= review.created_at %></p></li>
+	</ul>
+	</div>
+	
+	
+	<div class="users-review">
+		<p class="review-comment"><%= review.comment %></p>
+
+
+
+
+	    <% if logged_in? %>
+
+		<% if review.user_id == current_user.id %>
+
+			<div class="links btn-group">
+
+				<%= link_to "Edit", edit_movie_review_path(review.movie, review), class: "btn btn-custom" %>
+				  <% if current_user?(review.user) %>
+				<%= link_to "Delete", movie_review_path(review.movie, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+				<%end%>
+			</div>
+		</div>
+		<% end %>	
+
+	<% end %>
+
+</div>		
+
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>

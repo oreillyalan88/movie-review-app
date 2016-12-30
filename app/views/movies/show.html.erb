@@ -1,3 +1,5 @@
+
+
 <div class="row">
     <div class="col-md-4">
         
@@ -5,26 +7,72 @@
         
     </div>
     
-    <div class="col-md-8">
-        <h2><%= @movie.title %> </h2>
-        <h3><%= @movie.director %></h3>
-        <h4><%= @movie.genre.name %></h4>
-        <p><%= @movie.description %></p>
-    </div>
+        <div class="col-md-8">
+            
+            
+            
+            <div class ="movie-info">
+                    
+                <h2 class ="movie-title"><%= @movie.title %> </h2>
+                <h3 class ="movie-director">Directed by : <%= @movie.director %></h3>
+                <h2 class ="avg-rating">Average Rating</h2>
+                <div class ="average-review-rating" data-score=<%= @average_review %>></div>
+                <span class ="number-of-reviews">Based on <%= @movie.reviews.count%> Reviews</span>
+                <p class ="movie-desc"><%= @movie.description %></p>
+                
+            
+             </div>   
+             <div class="row">
 
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <!--where reviews/ratings will go -->
-    </div>
-</div>
+        <div class="col-md-12">
+            <div class ="reviews">
+            <!--where reviews/ratings will go -->
+            <h1>Reviews</h1>
+            <%= render @movie.reviews %>
+            
+            <div>
+                <%= link_to "Add Review", new_movie_review_path(@movie), class: "btn-custom" %>
+            </div>
+            </div>
+            <div class ="links btn-group">
 
-<%= link_to "Back", movies_url %>
+<%= link_to "Back", movies_url, class: "btn btn-custom" %>
 
     <% if logged_in? %>
         <% if @movie.user_id == current_user.id %>
-        <%= link_to "Edit", edit_movie_path(@movie) %>
-        <%= link_to "Delete", movie_path(@movie), method: :delete, data: {confirm: "Are your sure?"}  %>
+        <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-custom" %>
+        <%= link_to "Delete", movie_path(@movie), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-custom"  %>
         <% end %>
     
     <% end %>
+    
+  </div> 
+        </div>
+</div>
+    </div>
+
+</div>
+
+
+
+  
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>

@@ -1,18 +1,23 @@
 class MoviesController < ApplicationController
     before_action :find_movie, only: [:show, :edit, :update, :destroy]
-    
+    before_action :redirect_user, only: [:new, :edit, :update, :destroy]
     
     
     def index
         if params[:genre].blank?
-            @movies = Movie.all.order("created_at DESC")
+            @movies = Movie.all.order("created_at DESC").paginate(page: params[:page], :per_page=> 4)
         else
             @genre_id = Genre.find_by(name: params[:genre]).id
-            @movies = Movie.where(:genre_id => @genre_id).order("created_at DESC")
+            @movies = Movie.where(:genre_id => @genre_id).order("created_at DESC").paginate(page: params[:page], :per_page=> 4)
         end    
     end
     
     def show
+        if @movie.reviews.blank?
+            @average_review = 0
+        else
+            @average_review = @movie.reviews.average(:rating).round(2)
+        end
     end
     
     def new
@@ -58,5 +63,7 @@ class MoviesController < ApplicationController
         def find_movie
            @movie = Movie.find(params[:id])
         end
+        
+
     
 end
