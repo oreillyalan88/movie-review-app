@@ -33,8 +33,10 @@ class User < ApplicationRecord
                   # Defines a proto-feed.
                   # See "Following users" for the full implementation.
                   def feed
-                    Review.where("user_id IN (:following_ids) OR user_id = :user_id",
-                    following_ids: following_ids, user_id: id)
+                    following_ids = "SELECT followed_id FROM relationships
+                                     WHERE  follower_id = :user_id"
+                    Reviews.where("user_id IN (#{following_ids})
+                                     OR user_id = :user_id", user_id: id)
                   end
           
                 # Returns a random token.
