@@ -20,6 +20,7 @@ gem 'simple_form'
 gem "awesome_print", require:"ap"
 gem 'paperclip', '~> 5.1'
 gem 'searchkick', '~> 2.0'
+gem 'acts_as_votable', '~> 0.10.0'
 
 
 group :development, :test do

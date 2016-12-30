@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
+    acts_as_votable
     belongs_to :movie
     belongs_to :user
     default_scope -> { order(created_at: :desc) }
