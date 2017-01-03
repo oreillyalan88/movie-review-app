@@ -84,6 +84,14 @@ Rails.application.configure do
   
   # config/environments/production.rb
   
+  #ensureing assets are used in production
+      config.cache_classes = true
+      config.serve_static_assets = true
+      config.assets.compile = true
+      config.assets.digest = true
+  
+  
+  
   # Sets paperclip to upload images to Amazon s3
   config.paperclip_defaults = {
     storage: :s3,
