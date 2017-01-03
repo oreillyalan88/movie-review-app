@@ -1,12 +1,13 @@
 <h1 class="current-category"><%= params[:genre] %></h1>
 
 <% if @movies.count == 0 %>
-
+    <div class ="row">
     <h3>There are no Movies currently in this category</h3>
-    
-<%else %>
+    </div>
+        <% end %>
+<% else %>
 
-    <div class ="row"></div>
+    <div class ="row">
     
         <% @movies.each do |movie| %>
             <div class="col-md-3">
@@ -16,7 +17,7 @@
             </div>
         <% end %>
 
-    <%end%>
+<%end%>
     </div>
     <div class ="pagin">
     <%= will_paginate %>

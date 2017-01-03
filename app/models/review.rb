@@ -6,4 +6,6 @@ class Review < ApplicationRecord
     validates :user_id, presence: true
     validates :comment, presence: true, length: { maximum: 2000 }
     validates :rating, presence: true
+    validates_uniqueness_of :user_id, :scope => :movie_id
+    
 end

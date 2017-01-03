@@ -1,16 +1,17 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "sample app", root_path, id: "logo" %>
+          <%= link_to image_tag("logo.png", alt: "Site logo"),
+              root_path, class: 'navbar-brand'%>
+        <%= link_to "MovieShare", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Help", help_path %></li>
             <% if logged_in? %>
               <li><%= link_to "Users", users_path %></li>
               <li><%= link_to "Movies", movies_url %></li>
-             <%= form_tag search_movies_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+             <%= form_tag search_movies_path, method: :get, class: "navbar-form navbar-right" , role: "search" do %>
              <p>
-               <%= text_field_tag :search, params[:search], class: "form-control" %>
+               <%= text_field_tag :search, params[:search],placeholder: "Search for a movie", class: "form-control" %>
                <%= submit_tag "Search", name: nil, class: "btn btn-default1" %>
              </p>
              <% end %>

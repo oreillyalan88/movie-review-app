@@ -5,10 +5,20 @@ class ReviewsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     before_action :correct_user,   only: :destroy
     
-    def new
-        @review = Review.new
-    end
+        def new 
+          if current_user 
+            @review = Review.where(user_id: current_user.id, movie_id: params[:movie_id]).first_or_initialize 
+            if @review.id.present? 
+             flash[:success] = "You have already reviewed this Movie.You can edit the review below"
+              render 'edit' 
+            end 
+          end 
+        end
 
+
+
+        
+        
     def create
         @review = Review.new(review_params)
         @review.movie_id = @movie.id

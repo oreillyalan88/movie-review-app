@@ -4,6 +4,19 @@
     <div class="col-md-4">
         
         <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
+                     <div class ="links btn-group">
+            
+                        <%= link_to "Back", movies_url, class: "btn btn-custom" %>
+                        
+                            <% if logged_in? %>
+                                <% if @movie.user_id == current_user.id %>
+                                <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-custom" %>
+                                <%= link_to "Delete", movie_path(@movie), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-custom"  %>
+                                <% end %>
+                            
+                            <% end %>
+                    
+                  </div> 
         
     </div>
     
@@ -21,7 +34,8 @@
                 <p class ="movie-desc"><%= @movie.description %></p>
                 
             
-             </div>   
+             </div>
+       
              <div class="row">
 
         <div class="col-md-12">
@@ -29,24 +43,13 @@
             <!--where reviews/ratings will go -->
             <h1>Reviews</h1>
             <%= render @movie.reviews %>
-            
+
+            </div>
+                        
             <div>
                 <%= link_to "Add Review", new_movie_review_path(@movie), class: "btn-custom" %>
             </div>
-            </div>
-            <div class ="links btn-group">
 
-<%= link_to "Back", movies_url, class: "btn btn-custom" %>
-
-    <% if logged_in? %>
-        <% if @movie.user_id == current_user.id %>
-        <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-custom" %>
-        <%= link_to "Delete", movie_path(@movie), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-custom"  %>
-        <% end %>
-    
-    <% end %>
-    
-  </div> 
         </div>
 </div>
     </div>

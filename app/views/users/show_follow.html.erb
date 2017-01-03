@@ -1,6 +1,8 @@
 <% provide(:title, @title) %>
 <div class="row">
+  
   <aside class="col-md-4">
+      <div class="new-review-form">
     <section class="user_info">
       <%= gravatar_for @user %>
       <h1><%= @user.name %></h1>
@@ -17,8 +19,10 @@
         </div>
       <% end %>
     </section>
-  </aside>
+    </div>
+    </aside>
   <div class="col-md-8">
+    <div class="new-review-form">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
@@ -26,5 +30,6 @@
       </ul>
       <%= will_paginate %>
     <% end %>
+  </div>
   </div>
 </div>
