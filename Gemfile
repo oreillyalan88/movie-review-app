@@ -11,6 +11,7 @@ gem 'jbuilder', '2.4.1'
 gem 'coffee-script-source', '1.8.0'
 gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '3.3.6'
+gem 'bonsai-elasticsearch-rails'
 
 #----------------my gems
 gem 'faker',          '1.6.6'
