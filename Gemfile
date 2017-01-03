@@ -11,7 +11,6 @@ gem 'jbuilder', '2.4.1'
 gem 'coffee-script-source', '1.8.0'
 gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '3.3.6'
-gem 'bonsai-elasticsearch-rails'
 
 #----------------my gems
 gem 'faker',          '1.6.6'
@@ -24,6 +23,8 @@ gem 'searchkick', '~> 2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'pg', '0.18.4'
 gem 'aws-sdk', '~> 2.3'
+gem "rails-erd"
+gem 'bonsai-elasticsearch-rails'
 
 
 group :development, :test do
@@ -35,6 +36,7 @@ gem 'web-console', '3.1.1'
 gem 'listen', '3.0.8'
 gem 'spring', '1.7.2'
 gem 'spring-watcher-listen', '2.0.0'
+gem "rails-erd"
 end
 
 group :test do
