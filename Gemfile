@@ -22,6 +22,7 @@ gem 'paperclip', '~> 5.1'
 gem 'searchkick', '~> 2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'pg', '0.18.4'
+gem 'aws-sdk', '~> 2.3'
 
 
 group :development, :test do
