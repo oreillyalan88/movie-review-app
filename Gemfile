@@ -21,10 +21,10 @@ gem "awesome_print", require:"ap"
 gem 'paperclip', '~> 5.1'
 gem 'searchkick', '~> 2.0'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'pg', '0.18.4'
 
 
 group :development, :test do
-gem 'pg'
 gem 'byebug', '9.0.0', platform: :mri
 end
 
@@ -43,7 +43,7 @@ gem 'guard-minitest', '2.4.4'
 end
 
 group :production do
-
+gem 'pg', '0.18.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
